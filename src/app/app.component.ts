@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { freeApiService } from './services/freeApi.service';
 import { Comments } from './classes/comments';
+import { Posts } from './classes/posts';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +11,8 @@ import { Comments } from './classes/comments';
 export class AppComponent {
   title = 'chatTestApp';
   listComments:Comments[] = [];
+  listPost:Posts[] = [];
+comm: any;
 
   constructor(private _freeApiService:freeApiService){
 
@@ -18,9 +21,14 @@ export class AppComponent {
   ngOnInit(){
     this._freeApiService.getComments().subscribe(
 
-      data =>{
+      data => {
         this.listComments = data;
       }
     );
+
+    this._freeApiService.getPostByParameter().subscribe(
+      data => {
+        this.listPost = data;
+    });
   }
 }
