@@ -4,5 +4,4 @@ export class Comments {
     name!: string;
     email!: string;
     body!: string;
-
 }
