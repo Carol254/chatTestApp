@@ -26,10 +26,16 @@
     <th>Body</th>
   </tr>
 
-  <tr *ngFor="let post of listPost"  >
+  <tr *ngFor="let post of listPost">
     <td>{{post.id}}</td>
     <td>{{post.postId}}</td>
     <td>{{post.title}}</td>
     <td>{{post.body}}</td>
   </tr>
 </table>
+<hr>
+<h5>Post data returned </h5>
+<p>id: {{listOpost?.id}}</p>
+<p>postId: {{listOpost?.postId}}</p>
+<p>Title: {{listOpost?.title}}</p>
+<p>Body: {{listOpost?.body}}</p>

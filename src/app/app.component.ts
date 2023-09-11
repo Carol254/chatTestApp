@@ -12,13 +12,13 @@ export class AppComponent {
   title = 'chatTestApp';
   listComments:Comments[] = [];
   listPost:Posts[] = [];
-comm: any;
+  comm: any;
+  listOpost:Posts | undefined;
 
-  constructor(private _freeApiService:freeApiService){
-
-  }
+  constructor(private _freeApiService:freeApiService){}
   
   ngOnInit(){
+    //get method without parameters
     this._freeApiService.getComments().subscribe(
 
       data => {
@@ -26,9 +26,25 @@ comm: any;
       }
     );
 
+    //get method while using parameters
     this._freeApiService.getPostByParameter().subscribe(
       data => {
         this.listPost = data;
     });
-  }
+
+
+    //using the post method
+    let opost = new Posts();
+
+    opost.body = 'testBody';
+    opost.title = 'testTitle';
+    opost.postId = 5;
+
+    this._freeApiService.post(opost).subscribe(
+      data =>{
+        this.listOpost = data;
+      }
+    
+  );
+}
 }
