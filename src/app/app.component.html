@@ -22,14 +22,16 @@
   <tr>
     <th>Id</th>
     <th>PostId</th>
-    <th>Title</th>
+    <th>Name</th>
+    <th>Email</th>
     <th>Body</th>
   </tr>
 
   <tr *ngFor="let post of listPost">
     <td>{{post.id}}</td>
     <td>{{post.postId}}</td>
-    <td>{{post.title}}</td>
+    <td>{{post.name}}</td>
+    <td>{{post.email}}</td>
     <td>{{post.body}}</td>
   </tr>
 </table>

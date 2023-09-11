@@ -30,6 +30,8 @@ export class AppComponent {
     this._freeApiService.getPostByParameter().subscribe(
       data => {
         this.listPost = data;
+
+        console.log('Accessing the 2nd item ',this.listPost[1].body);
     });
 
 
