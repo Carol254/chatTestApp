@@ -31,7 +31,15 @@ export class AppComponent {
       data => {
         this.listPost = data;
 
-        console.log('Accessing the 2nd item ',this.listPost[1].body);
+        // console.log('Accessing the 11th item ',this.listPost[11] && this.listPost[11].email);
+        // if(this.listPost[11] && this.listPost[11].email){
+        //   console.log(this.listPost[11].email);
+        // }else {
+        //   console.log('Could not find data');
+        // }
+
+        let titlePropery = this.safetyCheck(()=> this.listPost[11].email);
+
     });
 
 
@@ -49,4 +57,13 @@ export class AppComponent {
     
   );
 }
+
+  safetyCheck(fn:any){
+    try{
+      return fn();
+    } catch (e){
+      console.log(e);
+      return undefined;
+    }
+  }
 }
