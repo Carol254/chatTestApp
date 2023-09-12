@@ -5,4 +5,5 @@ export class Posts {
     body!: string;
     name!:string;
     email!:string;
+    userId!: number;
 }

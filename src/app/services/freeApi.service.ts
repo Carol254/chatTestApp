@@ -20,4 +20,9 @@ export class freeApiService
     post(opost:Posts):Observable<any>{
         return this.httpClient.post("https://jsonplaceholder.typicode.com/posts",opost);
     }
+
+    put(opost:Posts):Observable<any>{
+
+        return this.httpClient.put("https://jsonplaceholder.typicode.com/posts/1",opost);
+    }
 }

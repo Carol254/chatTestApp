@@ -14,6 +14,7 @@ export class AppComponent {
   listPost:Posts[] = [];
   comm: any;
   listOpost:Posts | undefined;
+  objPuts!: Posts;
 
   constructor(private _freeApiService:freeApiService){}
   
@@ -54,8 +55,23 @@ export class AppComponent {
       data =>{
         this.listOpost = data;
       }
-    
   );
+
+      //PUT METHOD
+    opost = new Posts();
+
+    opost.body = 'new body updated';
+    opost.email = 'opost@email.com';
+    opost.userId = 2;
+    opost.name = 'newName';
+    opost.id = 2;
+
+    this._freeApiService.put(opost).subscribe(
+      data =>{
+        this.objPuts = data;
+      }
+    );
+
 }
 
   safetyCheck(fn:any){
@@ -67,3 +83,7 @@ export class AppComponent {
     }
   }
 }
+function l(): void {
+  throw new Error('Function not implemented.');
+}
+
