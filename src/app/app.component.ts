@@ -17,6 +17,7 @@ export class AppComponent {
   listOpost:Posts | undefined;
   objPuts!: Posts;
   objPatch!: Posts;
+  message!: string;
 
   constructor(private _freeApiService:freeApiService){}
   
@@ -77,6 +78,14 @@ export class AppComponent {
           this.objPatch = data;
         }
       )
+
+       // ********************************************* DELETE METHOD**************************************
+
+       this._freeApiService.delete().subscribe(
+        data =>{
+          this.message = "Resource deleted successfully!!!";
+        }
+       )
 
 }
 

@@ -30,4 +30,8 @@ export class freeApiService
 
         return this.httpClient.patch("https://jsonplaceholder.typicode.com/posts/1",opost);
     }
+
+    delete():Observable<any>{
+        return this.httpClient.delete("https://jsonplaceholder.typicode.com/posts/1");
+    }
 }
