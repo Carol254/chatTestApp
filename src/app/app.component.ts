@@ -13,8 +13,10 @@ export class AppComponent {
   listComments:Comments[] = [];
   listPost:Posts[] = [];
   comm: any;
+
   listOpost:Posts | undefined;
   objPuts!: Posts;
+  objPatch!: Posts;
 
   constructor(private _freeApiService:freeApiService){}
   
@@ -71,6 +73,17 @@ export class AppComponent {
         this.objPuts = data;
       }
     );
+
+      //PATCH METHOD
+
+      opost = new Posts();
+      opost.title = 'patched the title';
+
+      this._freeApiService.patch(opost).subscribe(
+        data =>{
+          this.objPatch = data;
+        }
+      )
 
 }
 
