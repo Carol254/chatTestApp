@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { freeApiService } from './services/freeApi.service';
 import { Comments } from './classes/comments';
 import { Posts } from './classes/posts';
+import { Albums } from './classes/albums';
+import { Photos } from './classes/photos';
 
 @Component({
   selector: 'app-root',
@@ -18,6 +20,11 @@ export class AppComponent {
   objPuts!: Posts;
   objPatch!: Posts;
   message!: string;
+
+  albumList:Albums[] = [];
+  albumSelected!: number;
+
+  photosList:Photos[] = [];
 
   constructor(private _freeApiService:freeApiService){}
   
@@ -85,9 +92,25 @@ export class AppComponent {
         data =>{
           this.message = "Resource deleted successfully!!!";
         }
-       )
+       );
+
+        // ********************************************* GET ALBUMS**************************************
+
+        this._freeApiService.getAblums().subscribe(
+          data =>{
+            this.albumList = data;
+          }
+        );
 
 }
+
+  onAlbumSelected(selectedAlbumId:any): void{
+    this._freeApiService.getPhotosForSelectedAlbumbyParameter(selectedAlbumId).subscribe(
+      data =>{
+        this.photosList = data;
+      }
+    )
+  }
 
   safetyCheck(fn:any){
     try{

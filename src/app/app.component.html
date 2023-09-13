@@ -1,4 +1,4 @@
-<table>
+<!-- <table>
   <tr>
     <th>Id</th>
     <th>Post Id</th>
@@ -15,7 +15,7 @@
     <td>{{comm.body}}</td>
 
   </tr>
-</table>
+</table> -->
 
 <hr>
 
@@ -66,3 +66,33 @@
 <h5>DELETE API </h5>
 
 <p>Mesage:{{message}}</p>
+
+<hr>
+
+<h1>LISTING AND FILTERING</h1>
+<div>
+  <select [(ngModel)]="albumSelected" (ngModelChange)="onAlbumSelected($event)">
+    <option *ngFor="let album of albumList" [value]="album.id"> {{album.title}}</option>
+  </select>
+
+  <div>The selected album id is:: {{albumSelected}}</div>
+</div>
+
+<hr>
+<h1>Get photos from album</h1>
+
+<table>
+  <tr>
+    <th>Id</th>
+    <th>AlbumId</th>
+    <th>Title</th>
+    <th>ThumbNail</th>
+  </tr>
+
+  <tr *ngFor="let photo of photosList">
+    <td>{{photo.id}}</td>
+    <td>{{photo.albumId}}</td>
+    <td>{{photo.title}}</td>
+    <td><img src="{{photo.thumbnailUrl}}"></td>
+  </tr>
+</table>

@@ -34,4 +34,14 @@ export class freeApiService
     delete():Observable<any>{
         return this.httpClient.delete("https://jsonplaceholder.typicode.com/posts/1");
     }
+
+    getAblums(): Observable<any>{
+        return this.httpClient.get("https://jsonplaceholder.typicode.com/albums");
+    }
+
+    getPhotosForSelectedAlbumbyParameter(selectedAlbumId: string):Observable<any>{
+        let param1 = new HttpParams().set('albumId',selectedAlbumId);
+
+       return this.httpClient.get("https://jsonplaceholder.typicode.com/photos",{params:param1});
+    }
 }
