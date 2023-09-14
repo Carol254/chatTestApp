@@ -42,6 +42,6 @@ export class freeApiService
     getPhotosForSelectedAlbumbyParameter(selectedAlbumId: string):Observable<any>{
         let param1 = new HttpParams().set('albumId',selectedAlbumId);
 
-       return this.httpClient.get("https://jsonplaceholder.typicode.com/photos",{params:param1});
+        return this.httpClient.get("https://jsonplaceholder.typicode.com/photos",{params:param1});
     }
 }
